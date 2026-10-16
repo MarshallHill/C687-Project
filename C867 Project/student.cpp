@@ -69,14 +69,14 @@ void Student::setDegreeProgram(DegreeProgram degreeProgram) {
 
 
 void Student::print() const {
-	cout << "Student ID: " << studentID << "\t";
+	cout << studentID << "\t";
 	cout << "First Name: " << firstName << "\t";
 	cout << "Last Name: " << lastName << "\t";
-	cout << "Email Address: " << emailAddress << "\t";
+	cout << "Email: " << emailAddress << "\t";
 	cout << "Age: " << age << "\t";
-	cout << "Days in Course: {" << daysInCourse[0] << ", "
+	cout << "daysInCourse: {" << daysInCourse[0] << ", "
 		<< daysInCourse[1] << ", "
-		<< daysInCourse[2] << "} \t";
+		<< daysInCourse[2] << "} ";
 	cout << "Degree Program: ";
 	switch (degreeProgram) {
 	case SECURITY:

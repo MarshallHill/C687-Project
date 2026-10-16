@@ -8,6 +8,13 @@ using namespace std;
 
 int main()
 {
+	//G1 Course info
+	cout << "Course Title: Scripting and Programming - Applications C867" << endl;
+	cout << "Programming Language: C++" << endl;
+	cout << "WGU student ID: 011616852" << endl;
+	cout << "Name: Edward Hill" << endl << endl;
+
+
 	const string studentData[] =
 	{ "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
 
@@ -17,7 +24,47 @@ int main()
 
 	"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
 
-	"A5,[Edward],[Hill],[ehil204@wgu.edu],[30],[2, 15, 9], SOFTWARE" };
+	"A5,Edward,Hill,ehil204@wgu.edu,30,2,15,9,SOFTWARE" };
+
+	
+	//G2 Roster class instance
+	Roster classRoster;
+
+	//G3 add each student
+	int numStudents = sizeof(studentData) / sizeof(studentData[0]);
+	for (int i = 0; i < numStudents; i++) {
+		classRoster.parse(studentData[i]);
+	}
+
+	//G4 pseudocode
+	classRoster.printAll();
+	cout << endl;
+	cout << "Average days in course" << endl;
+	for (Student* s : classRoster.classRosterArray) {
+			classRoster.printAverageDaysInCourse(s->getStudentID());
+		}
+	cout << endl;
+
+	classRoster.printInvalidEmails();
+	cout << endl;
+	
+	classRoster.printByDegreeProgram(SOFTWARE);
+	cout << endl;
+	
+	classRoster.remove("A3");
+	cout << "Removing A3" << endl << endl;
+	
+	classRoster.printAll();
+	cout << endl;
+
+	cout << "Removing A3" << endl;
+	classRoster.remove("A3");
+	
+	
+	
+
+	classRoster.~Roster();
+	return 0;
 }
 
 

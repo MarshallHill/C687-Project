@@ -3,6 +3,7 @@
 #include "roster.h"
 using namespace std;
 
+
 void Roster::parse(std::string row) {
 	std::stringstream ss(row);
 	std::string f[9];
@@ -29,9 +30,9 @@ void Roster::add(std::string StudentID, std::string firstName,
 	int daysInCourse[3] = { daysInCourse1, daysInCourse2, daysInCourse3 };
 	Student* student = new Student(StudentID, firstName, lastName, 
 	emailAddress, age, daysInCourse, degreeProgram);
-	classRosterArray.push_back(new Student(StudentID, firstName, lastName,
-		emailAddress, age, daysInCourse, degreeProgram));
+	classRosterArray.push_back(student);
 }
+
 
 void Roster::remove(std::string studentID) {
 	for (size_t i = 0; i < classRosterArray.size(); ++i) {
@@ -44,7 +45,7 @@ void Roster::remove(std::string studentID) {
 	std::cout << "Student ID " << studentID << " not found." << std::endl;
 }
 
-void Roster::printAll() const {
+void Roster::printAll() {
 	for (Student* s : classRosterArray) {
 		s->print();
 	}
@@ -55,7 +56,7 @@ void Roster::printAverageDaysInCourse(std::string studentID) {
 		if (s->getStudentID() == studentID) {
 			const int* days = s->getDaysInCourse();
 			double average = (days[0] + days[1] + days[2]) / 3.0;
-			std::cout << "Average days in course for student ID " << studentID << ": " << average << std::endl;
+			std::cout << studentID << ": " << average << std::endl;
 			return;
 		}
 	}
@@ -75,6 +76,7 @@ void Roster::printInvalidEmails() {
 }
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram) {
+	cout << "Degree Program: " << endl;
 	for (Student* s : classRosterArray) {
 		if (s->getDegreeProgram() == degreeProgram) {
 			s->print();
